@@ -33,7 +33,7 @@ dot:
 
 loop_start:
     bge s1, a2, loop_end #if ind1 >= len, break
-    bge s2, a2, loop_end #if ind2 >= len, brak
+    #bge s2, a2, loop_end #if ind2 >= len, brak
 
     addi t0, x0, 4 #t1 = a0[ind1]
     mul t0, t0, s1
@@ -43,7 +43,7 @@ loop_start:
 
     addi t0, x0, 4 #sum += a1[ind2]*a0[ind1]
     mul t0, t0, s2
-    add t0, t0, a0
+    add t0, t0, a1
     lw t0, 0(t0)
     mul t0, t0, t1
     add s0, s0, t0
@@ -58,7 +58,7 @@ loop_end:
     add a0, s0, x0
     # Epilogue
     lw s2, 8(sp)
-    lw s1, 8(sp)
+    lw s1, 4(sp)
     lw s0, 0(sp)
     lw ra, 12(sp)
     addi sp, sp, 16
