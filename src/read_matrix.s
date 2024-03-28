@@ -78,6 +78,8 @@ read_matrix:
     add s1, a0, x0
     jal fread
     #check fread error
+    add a0, s0, x0
+    jal fclose #0 success, -1 failure
 
     #load return
     add a0, s1, x0
