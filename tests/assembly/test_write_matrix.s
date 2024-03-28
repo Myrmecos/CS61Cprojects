@@ -3,7 +3,7 @@
 
 .data
 m0: .word 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 # MAKE CHANGES HERE TO TEST DIFFERENT MATRICES
-file_path: .asciiz "/Users/entomophile/CS/CS61Cprojects/proj2/CS61Cprojects/tests/outputs/test_write_matrix/myOp.bin"
+file_path: .asciiz "/Users/entomophile/CS/CS61Cprojects/proj2/CS61Cprojects/tests/outputs/test_write_matrix/OUTPUT.bin"
 
 .text
 main:

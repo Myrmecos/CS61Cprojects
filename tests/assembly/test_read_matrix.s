@@ -2,7 +2,7 @@
 .import ../../src/utils.s
 
 .data
-file_path: .asciiz "/Users/entomophile/CS/CS61Cprojects/proj2/CS61Cprojects/src/test_input.bin"
+file_path: .asciiz "/Users/entomophile/CS/CS61Cprojects/proj2/CS61Cprojects/tests/inputs/simple0/bin/m0.bin"
 vector0: .word 0 0
 
 .text

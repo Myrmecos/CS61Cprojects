@@ -24,6 +24,8 @@
 # =======================================================
 matmul:
 
+
+
     # Error checks
     ble a1, x0, Error2
     ble a2, x0, Error2
@@ -127,6 +129,7 @@ Error3:
     addi a0, x0, 3
     jal exit
 Error4:
+
     addi a0, x0, 4
     jal exit
 
