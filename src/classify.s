@@ -93,7 +93,6 @@ classify:
     
     jal malloc
 
-
     add a6, a0, x0 #a6 now contains ptr to newly allocated mem
     #above line is also filling in arg for matmul
     #fill in arguments for matmul
@@ -107,29 +106,25 @@ classify:
     #don't pull above statement around! as s0 is vacant for addr of d only after filling in arguments
     jal matmul #a2 here is <= 0?
 
-    #for debugging==========
-    add s3 a1, x0
-
-    add a0, x0, a6
-    addi a1, x0, 3
-    addi a2, x0, 1
-    jal print_int_array
-
-    add a1, s3, x0
-    #for debugging===========
-
     #prepare arg for relu function
     add a0, s0, x0 #a0: ptr to array
     lw t0, 28(sp)#a1, number of elements in array
     lw t1, 48(sp)
     mul a1, t0, t1
 
+
+    #so far so good 
+
     jal relu
+
+
+
+    
 
     #ready to go for next multiplication!
     #malloc memory for second result first!
     lw t0, 36(sp) #this is number of rows for result of m1*(d)
-    lw t1, 40(s0) #cols for result of m1*d
+    lw t1, 48(sp) #cols for result of m1*d
     addi a0, x0, 4
     mul a0, a0, t0 
     mul a0, a0, t1#a0 now contains size of m1*d in bytes
@@ -141,10 +136,10 @@ classify:
     add a0, s1, x0 #s1 contains m1
     add a3, s0, x0 #s0 contains d
     add s0, a6, x0 #s0 will contains the result of second matrix multiplication!
-    lw a1, 28(sp)#row of first
-    lw a2, 48(sp)#col of first
-    lw a4, 36(sp)#row of second
-    lw a5, 40(sp)#col of second
+    lw a1, 36(sp)#row of first
+    lw a2, 40(sp)#col of first
+    lw a4, 28(sp)#row of second
+    lw a5, 48(sp)#col of second
 
     jal matmul
 
@@ -160,13 +155,13 @@ classify:
     #fill arguments
     #a0: ptr to filename
     lw a0 4(sp)
-    lw a0, 12(a0)
+    lw a0, 16(a0)
     #a1: ptr to start of matrix in mem
     add a1, s0, x0
     #a2: number of rows in matrix
     lw a2, 36(sp)
     #a3: number of col in matrix
-    lw a2, 48(sp)
+    lw a3, 48(sp)
     jal write_matrix
 
 
@@ -193,9 +188,12 @@ classify:
 
 
     # Print newline afterwards for clarity
+    lw t0, 8(sp)
+    bne t0, x0, NoPrint
     addi a1, x0, '\n'
     jal print_char
 
+NoPrint:
     #epilogue
     lw s0, 12(sp)
     lw s1, 16(sp)

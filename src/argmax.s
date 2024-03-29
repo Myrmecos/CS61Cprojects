@@ -43,6 +43,7 @@ loop_continue:
 
 loop_end:
     add a0, s0, x0 #remember to place back output!!!!
+    addi a0, a0, -1
     # Epilogue
     lw s1, 0(sp)
     lw s0, 4(sp)

@@ -1,0 +1,19 @@
+java -jar tools/venus.jar src/main.s -ms -1 tests/inputs/simple0/bin/m0.bin tests/inputs/simple0/bin/m1.bin tests/inputs/simple0/bin/inputs/input0.bin  tests/outputs/test_basic_main/student_basic_outputs.bin
+
+
+java -jar tools/venus.jar src/main.s -ms -1 
+tests/inputs/simple0/bin/m0.bin 
+tests/inputs/simple0/bin/m1.bin 
+tests/inputs/simple0/bin/inputs/input0.bin  
+tests/outputs/test_basic_main/student_basic_outputs.bin
+
+
+
+
+python tools/convert.py --to-ascii tests/outputs/test_basic_main/student_basic_outputs.bin tests/outputs/test_basic_main/student_basic_output.txt
+
+java -jar tools/venus.jar src/main.s -ms -1 tests/inputs/mnist/bin/m2.bin tests/inputs/mnist/bin/m1.bin tests/inputs/mnist/bin/inputs/mnist_input1.bin  tests/outputs/test_mnist_main/student_mnist_outputs.bin
+
+python tools/convert.py --to-ascii tests/outputs/test_mnist_main/student_mnist_outputs.bin tests/outputs/test_mnist_main/student_mnist_output.txt
+
+java -jar tools/venus.jar src/main.s -ms -1 tests/inputs/mnist/bin/m0.bin tests/inputs/mnist/bin/m1.bin tests/inputs/mnist/bin/inputs/mnist_input6.bin  tests/outputs/test_mnist_main/student_mnist_outputs.bin

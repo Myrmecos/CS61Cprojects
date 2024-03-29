@@ -115,7 +115,7 @@ outer_loop_end:
     lw s0, 20(sp)
     lw s1, 24(sp)
     lw ra, 28(sp)
-    addi sp, sp, 28
+    addi sp, sp, 32
 
     
     

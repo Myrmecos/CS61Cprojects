@@ -7,6 +7,7 @@
 .import utils.s
 .import classify.s
 
+
 .globl main
 
 # This is a dummy main function which imports and calls the classify function.
